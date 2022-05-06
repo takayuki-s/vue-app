@@ -7,6 +7,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <label class="label">Vue Learning</label>
 </template>
 
 <style>
@@ -17,5 +18,9 @@ import HelloWorld from './components/HelloWorld.vue'
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.label {
+  font-size: 12px;
 }
 </style>
