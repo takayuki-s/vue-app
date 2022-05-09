@@ -1,10 +1,15 @@
 <script setup lang="ts">
-  import { ref } from "vue"
+  import { ref, reactive } from "vue"
 
-  const itemName1 = ref<string>("Desk")
+  // const itemName1 = ref<string>("Desk")
   const itemName2 = "Bike"
 
-  const price1 = 40000
+  const item1 = reactive({
+    name: "Desk",
+    price: 40000
+  })
+
+  // const price1 = 40000
   const price2 = 20000
 
   const url1 = "https://flexispot.jp/standing-desk/e9.html?gclid=CjwKCAjwjtOTBhAvEiwASG4bCE_eT44g8UjiYePQaQm9kCXldYW8_Mqp87KR2S5ocYsMKZPLjocVFxoCm3EQAvD_BwE"
@@ -15,8 +20,10 @@
   }
 
   const input = (event: any) => {
-    console.log("event.target.value:", event.target.value)
-    itemName1.value = event.target.value
+    item1.name = event.target.value
+  }
+  const inputPrice = (event: any) => {
+    item1.price = event.target.value
   }
 </script>
 
@@ -24,11 +31,12 @@
 <div class="container">
   <h1> Payment</h1>
   <input v-on:input="input" />
+  <input v-on:input="inputPrice" />
   <div class="payment">
-    <label>{{ itemName1 }}</label>
-    <label>{{ price1 }} yen</label>
+    <label>{{ item1.name }}</label>
+    <label>{{ item1.price }} yen</label>
     <a v-bind:href="url1">bought at...</a>
-    <button v-on:click="buy(itemName1)">BUY</button>
+    <button v-on:click="buy(item1.name)">BUY</button>
   </div>
   <div class="payment">
     <label>{{ itemName2 }}</label>
@@ -52,6 +60,9 @@
     height: 80px;
     width: 400px;
     background-color: aliceblue;
+    margin-bottom: 8px;
+  }
+  input {
     margin-bottom: 8px;
   }
   label {
