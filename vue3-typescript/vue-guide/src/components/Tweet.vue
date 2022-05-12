@@ -2,12 +2,18 @@
 import { ref } from 'vue';
 const tweets = ref([{ id: 0, description: "Hello, world!"}, { id: 1, description: "this is a second tweet"}])
 const inputtingDescription = ref<string>("")
+
 const postTweet = () => {
   const tweet = { id: Math.random(), description: inputtingDescription.value}
   tweets.value.push(tweet)
   inputtingDescription.value = ""
   console.log("post...", tweets.value)
 }
+
+const deleteTweet = (id: number) => {
+  tweets.value = tweets.value.filter(t => t.id !== id)
+}
+
 </script>
 
 <template>
@@ -21,6 +27,7 @@ const postTweet = () => {
       <ul>
         <li v-for="tweet in tweets" :key="tweet.id" class="tweet-list">
           <span>{{ tweet.description }}</span>
+          <button @click="deleteTweet(tweet.id)" class="delete-button">delete</button>
         </li>
       </ul>
     </div>
@@ -57,7 +64,7 @@ const postTweet = () => {
   width: 300px;
 }
 
-button {
+.save-button {
   color: #fff;
   font-weight: bold;
   background-color: #68c9c9;
@@ -66,9 +73,21 @@ button {
   width: 60px;
   height: 22px;
 }
+.save-button:hover {
+  background-color: #37bdbd;
+}
 
-button:hover {
-  margin-bottom: 16px
+.delete-button {
+  color: #fff;
+  font-weight: bold;
+  background-color: #c99a68;
+  border-radius: 2px;
+  border: none;
+  width: 60px;
+  height: 22px;
+}
+.delete-button:hover {
+  background-color: #ac783f;
 }
 
 input {
