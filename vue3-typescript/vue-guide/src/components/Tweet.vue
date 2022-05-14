@@ -25,7 +25,7 @@ const deleteTweet = (id: number) => {
     <div class="tweet-container">
       <p v-if="tweets.length <= 0">No Tweets have been added</p>
       <ul v-else>
-        <TweetList />
+        <TweetList :tweets="tweets"/>
       </ul>
     </div>
   </div>

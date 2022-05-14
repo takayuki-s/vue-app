@@ -1,6 +1,17 @@
 <script setup lang="ts">
-const tweets: any = []
+import { defineProps } from 'vue';
+
+type Tweet = {
+  id: number,
+  description: string
+}
+type Props = {
+  tweets: Tweet[]
+}
+
 const deleteTweet = (id: number) => {}
+
+defineProps<Props>()
 </script>
 
 <template>
