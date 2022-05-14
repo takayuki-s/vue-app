@@ -6,13 +6,18 @@ type Props = {
 }
 
 defineProps<Props>()
+const emit = defineEmits(["delete"])
+
+const onClickDelete = (id: number) => {
+  emit("delete", id)
+}
 </script>
 
 <template>
   <li v-for="person in persons" :key="person.id" class="person-list">
     <span>{{ person.name }}</span>
     <span>{{ person.age }}</span>
-    <button>
+    <button v-on:click="onClickDelete(person.id)">
       <span>delete</span>
     </button>
   </li>

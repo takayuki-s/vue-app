@@ -11,15 +11,23 @@ export type Person = {
 
 const persons: Ref<Person[]> = ref([{id: 0, name: "John", age: 24}, {id: 1, name: "Mike", age: 26}])
 
+const registerPerson = (person: Person) => {
+  persons.value.push(person)
+}
+
+const deletePerson = (id: number) => {
+  persons.value = persons.value.filter(p => p.id !== id)
+}
+
 </script>
 
 <template>
   <div class="container">
     <h1>title</h1>
-    <ParsonPostForm />
+    <ParsonPostForm @register="registerPerson" />
     <div class="list-container">
       <ul>
-        <PersonList :persons="persons" />
+        <PersonList :persons="persons" @delete="deletePerson" />
       </ul>
     </div>
   </div>
