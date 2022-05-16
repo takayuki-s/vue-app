@@ -19,6 +19,9 @@ import RocketIcon from './RocketIcon.vue';
         <RocketIcon />
         <RocketIcon />
       </div>
+      <template #footer>
+        <span>This is Footer</span>
+      </template>
     </Card>
 
     <Card title="Icons with Text" class="card with-text-card">
@@ -31,7 +34,7 @@ import RocketIcon from './RocketIcon.vue';
   </div>
 </template>
 
-<style>
+<style scoped>
 .container {
   display: flex;
   flex-direction: column;
