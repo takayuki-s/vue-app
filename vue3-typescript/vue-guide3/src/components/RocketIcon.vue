@@ -26,8 +26,5 @@
   </svg>
 </template>
 
-<script lang="ts">
-export default {
-  name: "RocketIcon",
-};
+<script setup lang="ts">
 </script>
