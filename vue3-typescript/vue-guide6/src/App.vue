@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import TodoList from './components/TodoList.vue';
+import { provide } from 'vue';
+import { todos } from './useTodo';
+
+provide("todos", todos)
 </script>
 
-<template></template>
+<template>
+  <TodoList />
+</template>
 
 <style>
 #app {
