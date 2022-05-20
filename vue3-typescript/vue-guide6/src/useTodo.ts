@@ -10,3 +10,10 @@ const defaultTodos = [
   { id: 1, title: "second" },
 ];
 export const todos = ref<Todo[]>(defaultTodos);
+export const addTodo = (title: string) => {
+  const newTodo: Todo = {
+    id: Math.random(),
+    title,
+  };
+  todos.value.push(newTodo);
+};

@@ -2,9 +2,10 @@
 import { inject } from 'vue';
 
 const todos = inject("todos")
+const _addTodo = inject("addTodo")
 
 const addTodo = (title: string) => {
-  console.log(title)
+  _addTodo(title)
 }
 
 </script>
