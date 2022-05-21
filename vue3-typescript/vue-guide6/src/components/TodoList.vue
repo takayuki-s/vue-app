@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { inject } from 'vue';
 
-const todos = inject("todos")
-const _addTodo = inject("addTodo")
+const { todos, addTodo: _addTodo } = inject("todos")
+// const todos = inject("todos")
+// const _addTodo = inject("addTodo")
 
 const addTodo = (title: string) => {
   _addTodo(title)
