@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { DirectiveBinding, ref, watch } from 'vue';
+import Rating from './Rating.vue';
 
 const userName = ref<string>("")
 const from = ref<string>("japan")
@@ -79,6 +80,9 @@ const onSubmit = () => {
         <input id="how-other" name="how" type="radio" value="others" v-model="radios" />
         <label for="how-other">Other</label>
       </div>
+    </div>
+    <div>
+      <rating />
     </div>
     <div>
       <button @click.prevent="onSubmit">Save Data</button>
