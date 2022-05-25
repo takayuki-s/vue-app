@@ -5,6 +5,8 @@ import Rating from './Rating.vue';
 const userName = ref<string>("")
 const from = ref<string>("japan")
 const interest = ref([])
+const ratings = ref<string>("")
+
 const radios = ref([])
 
 watch(interest, () => {
@@ -28,6 +30,7 @@ const onSubmit = () => {
   console.log("userName ", userName.value)
   console.log("from ", from.value)
   console.log("radio ", radios.value)
+  console.log("ratings ", ratings.value)
   interest.value = []
 }
 
@@ -82,7 +85,7 @@ const onSubmit = () => {
       </div>
     </div>
     <div>
-      <rating />
+      <rating v-model="ratings" />
     </div>
     <div>
       <button @click.prevent="onSubmit">Save Data</button>
