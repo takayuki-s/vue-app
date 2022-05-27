@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import axios from 'axios'
 
 const vFocus = {
@@ -10,6 +10,11 @@ const vFocus = {
 
 const userName = ref<string>('')
 const interest = ref([])
+
+onMounted(async () => {
+  const data = await axios.get("URL")
+  console.log("data is ", data)
+})
 
 const onSubmit = (e: Event) => {
   axios.post("URL", {
