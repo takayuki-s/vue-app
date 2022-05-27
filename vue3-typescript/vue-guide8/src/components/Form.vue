@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import axios from 'axios'
 
 const vFocus = {
   mounted: (el: HTMLElement) => {
@@ -11,14 +12,10 @@ const userName = ref<string>('')
 const interest = ref([])
 
 const onSubmit = (e: Event) => {
-  fetch("URL", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({name: userName.value, interest: interest.value})
-  }
-  )
+  axios.post("URL", {
+    name: userName.value,
+    interest: interest.value
+  })
   interest.value = []
 }
 
