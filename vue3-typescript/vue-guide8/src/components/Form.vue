@@ -11,6 +11,14 @@ const userName = ref<string>('')
 const interest = ref([])
 
 const onSubmit = (e: Event) => {
+  fetch("URL", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({name: userName.value, interest: interest.value})
+  }
+  )
   interest.value = []
 }
 
