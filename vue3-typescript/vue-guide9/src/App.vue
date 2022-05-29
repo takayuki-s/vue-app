@@ -3,15 +3,28 @@
     <div class="circle" :class="{ animate: animatingCircle }"></div>
     <button @click="animateCircle">Animate</button>
   </div>
+
+  <div class="container">
+    <transition name="paragraph">
+      <p v-if="paragraphVisible">Paragraph</p>
+    </transition>
+    <button @click="toggleParagraph">Switch</button>
+  </div>
 </template>  
 
 <script setup lang="ts">
 import { ref } from 'vue';
 
 const animatingCircle = ref(false)
+const paragraphVisible = ref(false)
+
 const animateCircle = () => {
   animatingCircle.value = true
 }
+const toggleParagraph = () => {
+  paragraphVisible.value = !paragraphVisible.value
+}
+
 </script>
 
 <style>
@@ -55,6 +68,18 @@ button:active {
   padding: 2rem;
   border: 2px solid #ccc;
   border-radius: 12px;
+}
+
+.paragraph-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.paragraph-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+.paragraph-enter-active {
+  transition: all 0.3s ease-out;
 }
 
 .animate {
