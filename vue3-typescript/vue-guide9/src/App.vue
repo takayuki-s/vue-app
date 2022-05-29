@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="circle"></div>
+    <div class="circle" :class="{ animate: animatingCircle }"></div>
     <button @click="animateCircle">Animate</button>
   </div>
 </template>  
@@ -55,5 +55,22 @@ button:active {
   padding: 2rem;
   border: 2px solid #ccc;
   border-radius: 12px;
+}
+
+.animate {
+  /* transform: translateX(-100px) */
+  animation: fade 0.3s ease-out forwards;
+}
+
+@keyframes fade {
+  0% {
+    transform: translateX(0)
+  }
+  70% {
+    transform: translateX(-90px)
+  }
+  100% {
+    transform: translateX(-100px)
+  }
 }
 </style>
