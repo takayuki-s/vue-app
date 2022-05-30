@@ -1,11 +1,19 @@
 <template>
-  <div class="backdrop">
-    <div></div>
-    <dialog open>
+  <div class="backdrop" v-if="open"></div>
+  <Transition name="modal">
+    <dialog open v-if="open" class="dialog">
       <slot></slot>
     </dialog>
-  </div>
+  </Transition>
 </template>
+
+<script setup lang="ts">
+  type Props = {
+    open: boolean
+  }
+
+  defineProps<Props>()
+</script>
 
 <style scoped>
 .backdrop {
@@ -15,6 +23,46 @@
   width: 100%;
   height: 100vh;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.077);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialog {
+  position: fixed;
+  top: 30vh;
+  width: 30rem;
+  left: calc(50% - 15rem);
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 1rem;
+  background-color: white;
+  z-index: 100;
+  border: none;
+}
+.modal-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.modal-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+.modal-enter-active {
+  animation: modal 0.3s ease-out;
+}
+
+.modal-leave-active {
+  animation: modal 0.3s ease-in reverse;
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 </style>

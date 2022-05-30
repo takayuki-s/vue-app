@@ -11,7 +11,7 @@
     <button @click="toggleParagraph">Switch</button>
   </div>
 
-  <Modal v-if="dialogIsVisible">
+  <Modal :open="dialogIsVisible">
     <p>This is a test modal</p>
     <button @click="toggleModal">Close</button>
   </Modal>
